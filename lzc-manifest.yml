@@ -21,10 +21,9 @@ application:
         - /*
       do:
         - src: file:///lzcapp/pkg/content/lazycat-injects/lzc-file-chooser-inject.js
-
 services:
   dbx:
-    # upstream: t8y2/dbx:0.6.0
+    # upstream: docker.io/t8y2/dbx:0.6.0
     image: docker.1ms.run/t8y2/dbx:0.6.0
     environment:
       - DBX_PASSWORD={{ .U.dbx_password }}
@@ -33,5 +32,4 @@ services:
       - DBX_WEB_MCP_ALLOWED_ORIGINS={{ .U.dbx_web_mcp_allowed_origins }}
     binds:
       - /lzcapp/var/dbx:/app/data
-
 usage: "打开 DBX 后即可管理数据库；Web MCP 的令牌、允许的 Host 和 Origin 可在安装设置向导中配置。"
