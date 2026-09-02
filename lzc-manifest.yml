@@ -1,0 +1,37 @@
+application:
+  subdomain: dbx
+  background_task: true
+  upstreams:
+    - location: /
+      backend: http://dbx:4224/
+  injects:
+    - id: login-autofill
+      on: browser
+      when:
+        - /*
+      do:
+        - src: builtin://simple-inject-password
+          params:
+            password: "{{ .U.dbx_password }}"
+            allowPasswordOnly: true
+            autoSubmit: true
+    - id: open-save-chooser
+      on: browser
+      when:
+        - /*
+      do:
+        - src: file:///lzcapp/pkg/content/lazycat-injects/lzc-file-chooser-inject.js
+
+services:
+  dbx:
+    # upstream: t8y2/dbx:0.6.0
+    image: docker.1ms.run/t8y2/dbx:0.6.0
+    environment:
+      - {{ printf "DBX_PASSWORD=%s" .U.dbx_password | quote }}
+      - {{ printf "DBX_WEB_MCP_TOKEN=%s" .U.dbx_web_mcp_token | quote }}
+      - {{ printf "DBX_WEB_MCP_ALLOWED_HOSTS=%s" .U.dbx_web_mcp_allowed_hosts | quote }}
+      - {{ printf "DBX_WEB_MCP_ALLOWED_ORIGINS=%s" .U.dbx_web_mcp_allowed_origins | quote }}
+    binds:
+      - /lzcapp/var/dbx:/app/data
+
+usage: "打开 DBX 后即可管理数据库；Web MCP 的令牌、允许的 Host 和 Origin 可在安装设置向导中配置。"

@@ -1,0 +1,43 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/dbx.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: dbx
+
+build:
+  run_buildscript: false
+
+images:
+  - id: dbx
+    target: service
+    service: dbx
+    source: docker.io/t8y2/dbx
+    channel: stable
+    sort: semver
+    tag_regex: '^v?[0-9]+\.[0-9]+\.[0-9]+$'
+    delivery:
+      mode: mirror
+      require_digest_match: true
+
+stores:
+  official:
+    enabled: false
+    continue_if_newer_version: true
+    skip_if_version_exists: false
+    retry:
+      enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: DBX
+    summary: "轻量级跨平台数据库管理工具，支持 90+ 数据库、AI 助手与 MCP Server"

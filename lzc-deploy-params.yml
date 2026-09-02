@@ -1,0 +1,56 @@
+params:
+  - id: dbx_password
+    type: secret
+    name: "DBX Password"
+    description: "Password used to sign in to the DBX web interface"
+    default_value: "$random(len=20)"
+    optional: false
+
+  - id: dbx_web_mcp_token
+    type: secret
+    name: "Web MCP Token"
+    description: "Long random secret used to authenticate DBX Web MCP clients"
+    default_value: "$random(len=32)"
+    optional: false
+
+  - id: dbx_web_mcp_allowed_hosts
+    type: string
+    name: "Web MCP Allowed Hosts"
+    description: "Allowed Host header values for Web MCP clients, for example localhost:4224"
+    default_value: "localhost:4224"
+    optional: false
+
+  - id: dbx_web_mcp_allowed_origins
+    type: string
+    name: "Web MCP Allowed Origins"
+    description: "Allowed browser MCP client Origins; use * to allow all Origins"
+    default_value: "*"
+    optional: false
+
+locales:
+  en:
+    dbx_password:
+      name: "DBX Password"
+      description: "Password used to sign in to the DBX web interface"
+    dbx_web_mcp_token:
+      name: "Web MCP Token"
+      description: "Long random secret used to authenticate DBX Web MCP clients"
+    dbx_web_mcp_allowed_hosts:
+      name: "Web MCP Allowed Hosts"
+      description: "Allowed Host header values for Web MCP clients, for example localhost:4224"
+    dbx_web_mcp_allowed_origins:
+      name: "Web MCP Allowed Origins"
+      description: "Allowed browser MCP client Origins; use * to allow all Origins"
+  zh:
+    dbx_password:
+      name: "DBX 登录密码"
+      description: "用于登录 DBX Web 界面的密码"
+    dbx_web_mcp_token:
+      name: "Web MCP 令牌"
+      description: "用于验证 DBX Web MCP 客户端的长随机密钥"
+    dbx_web_mcp_allowed_hosts:
+      name: "Web MCP 允许的 Host"
+      description: "允许访问 Web MCP 的 Host 请求头，例如 localhost:4224"
+    dbx_web_mcp_allowed_origins:
+      name: "Web MCP 允许的 Origin"
+      description: "允许访问的浏览器 MCP 客户端 Origin；* 表示允许全部 Origin"
