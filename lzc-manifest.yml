@@ -27,10 +27,10 @@ services:
     # upstream: t8y2/dbx:0.6.0
     image: docker.1ms.run/t8y2/dbx:0.6.0
     environment:
-      - {{ printf "DBX_PASSWORD=%s" .U.dbx_password | quote }}
-      - {{ printf "DBX_WEB_MCP_TOKEN=%s" .U.dbx_web_mcp_token | quote }}
-      - {{ printf "DBX_WEB_MCP_ALLOWED_HOSTS=%s" .U.dbx_web_mcp_allowed_hosts | quote }}
-      - {{ printf "DBX_WEB_MCP_ALLOWED_ORIGINS=%s" .U.dbx_web_mcp_allowed_origins | quote }}
+      - DBX_PASSWORD={{ .U.dbx_password }}
+      - DBX_WEB_MCP_TOKEN={{ .U.dbx_web_mcp_token }}
+      - DBX_WEB_MCP_ALLOWED_HOSTS={{ .U.dbx_web_mcp_allowed_hosts }}
+      - DBX_WEB_MCP_ALLOWED_ORIGINS={{ .U.dbx_web_mcp_allowed_origins }}
     binds:
       - /lzcapp/var/dbx:/app/data
 
