@@ -23,8 +23,8 @@ application:
         - src: file:///lzcapp/pkg/content/lazycat-injects/lzc-file-chooser-inject.js
 services:
   dbx:
-    # upstream: docker.io/t8y2/dbx:0.6.6
-    image: docker.1ms.run/t8y2/dbx:0.6.6
+    # upstream: docker.io/t8y2/dbx:0.6.8
+    image: docker.1ms.run/t8y2/dbx:0.6.8
     environment:
       - DBX_PASSWORD={{ .U.dbx_password }}
       - DBX_WEB_MCP_TOKEN={{ .U.dbx_web_mcp_token }}
