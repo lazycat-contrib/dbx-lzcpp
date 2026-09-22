@@ -1,5 +1,5 @@
 package: community.lazycat.app.dbx
-version: 0.6.18
+version: 0.6.19
 name: DBX
 description: "20 MB lightweight cross-platform database client for 90+ databases, including MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, SQL Server, and Dameng. Built-in AI, MCP Server, CLI, desktop and Docker."
 min_os_version: 1.5.0
