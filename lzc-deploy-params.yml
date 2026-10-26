@@ -16,16 +16,16 @@ params:
   - id: dbx_web_mcp_allowed_hosts
     type: string
     name: "Web MCP Allowed Hosts"
-    description: "Allowed Host header values for Web MCP clients, for example localhost:4224"
-    default_value: "localhost:4224"
+    description: "Comma-separated Host values Web MCP requests may use. Each entry is a bare host or host:port; a bare host matches any port. Defaults to the in-container service name. Required when a Web MCP token is set."
+    default_value: "dbx"
     optional: false
 
   - id: dbx_web_mcp_allowed_origins
     type: string
     name: "Web MCP Allowed Origins"
-    description: "Allowed browser MCP client Origins; use * to allow all Origins"
-    default_value: "*"
-    optional: false
+    description: "Comma-separated browser Origins allowed to call Web MCP. Each entry must be a full origin like https://dbx.example.com (scheme + host, no path, no trailing slash). Leave empty unless you connect a browser MCP client; empty denies all non-loopback browser origins while the app itself keeps working."
+    default_value: ""
+    optional: true
 
 locales:
   en:
@@ -40,7 +40,7 @@ locales:
       description: "Allowed Host header values for Web MCP clients, for example localhost:4224"
     dbx_web_mcp_allowed_origins:
       name: "Web MCP Allowed Origins"
-      description: "Allowed browser MCP client Origins; use * to allow all Origins"
+      description: "允许调用 Web MCP 的浏览器 Origin，逗号分隔；每项必须是完整 origin（如 https://dbx.example.com，只有协议+主机、不带路径和斜杠）。不用浏览器 MCP 客户端就留空；留空仅拒绝非回环的浏览器 Origin，应用本身不受影响。"
   zh:
     dbx_password:
       name: "DBX 登录密码"
@@ -53,4 +53,4 @@ locales:
       description: "允许访问 Web MCP 的 Host 请求头，例如 localhost:4224"
     dbx_web_mcp_allowed_origins:
       name: "Web MCP 允许的 Origin"
-      description: "允许访问的浏览器 MCP 客户端 Origin；* 表示允许全部 Origin"
+      description: "允许调用 Web MCP 的浏览器 Origin，逗号分隔；每项必须是完整 origin（如 https://dbx.example.com）。不用浏览器 MCP 客户端就留空。"

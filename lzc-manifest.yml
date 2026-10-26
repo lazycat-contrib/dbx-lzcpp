@@ -32,4 +32,4 @@ services:
       - DBX_WEB_MCP_ALLOWED_ORIGINS={{ .U.dbx_web_mcp_allowed_origins }}
     binds:
       - /lzcapp/var/dbx:/app/data
-usage: "打开 DBX 后即可管理数据库；Web MCP 的令牌、允许的 Host 和 Origin 可在安装设置向导中配置。"
+usage: "打开 DBX 后即可管理数据库；Web MCP 的令牌、允许的 Host 和 Origin 可在安装设置向导中配置。Origin 需填完整地址（如 https://dbx.example.com），留空则不启用浏览器直连 Web MCP。"
